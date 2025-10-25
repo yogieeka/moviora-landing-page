@@ -119,32 +119,8 @@ function createParticles() {
 // Initialize particles
 document.addEventListener('DOMContentLoaded', createParticles);
 
-// Add dynamic typing effect to hero title
-function typeWriter(element, text, speed = 100) {
-    let i = 0;
-    element.innerHTML = '';
-
-    function type() {
-        if (i < text.length) {
-            element.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(type, speed);
-        }
-    }
-
-    type();
-}
-
-// Initialize typing effect
-document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(() => {
-        const heroTitle = document.querySelector('.hero-title');
-        if (heroTitle) {
-            const originalText = heroTitle.textContent;
-            typeWriter(heroTitle, originalText, 50);
-        }
-    }, 500);
-});
+// Typing effect disabled to preserve gradient-text styling
+// The typing effect was removing the span element with gradient-text class
 
 // Add hover effects for feature cards
 document.addEventListener('DOMContentLoaded', () => {
@@ -202,3 +178,6 @@ function createScrollProgress() {
 
 // Initialize scroll progress
 document.addEventListener('DOMContentLoaded', createScrollProgress);
+
+// Netflix-style background is now handled by CSS with image
+// No need for JavaScript-generated movie cards anymore

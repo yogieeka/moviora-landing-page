@@ -5,15 +5,16 @@
 }
 
 :root {
-    --primary-color: #e50914;
-    --primary-dark: #b8070f;
+    --primary-color: #8B0000;
+    --primary-dark: #5a0000;
+    --accent-cyan: #00e5ff;
     --secondary-color: #141414;
     --dark-bg: #000000;
     --dark-surface: #1a1a1a;
     --text-primary: #ffffff;
     --text-secondary: #b3b3b3;
     --text-muted: #808080;
-    --gradient: linear-gradient(135deg, #e50914 0%, #f40612 100%);
+    --gradient: linear-gradient(135deg, #8B0000 0%, #5a0000 100%);
     --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -24,6 +25,13 @@ body {
     color: var(--text-primary);
     line-height: 1.6;
     overflow-x: hidden;
+}
+
+/* Apply Bebas Neue to all headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 400;
+    letter-spacing: 2px;
 }
 
 .container {
@@ -53,13 +61,32 @@ body {
     height: 70px;
 }
 
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-logo .logo-image {
+    width: 45px;
+    height: 45px;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.nav-logo .logo-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(139, 0, 0, 0.5);
+}
+
 .nav-logo h2 {
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-weight: 700;
-    font-size: 1.8rem;
+    font-family: 'Bebas Neue', sans-serif;
+    color: #00e5ff;
+    font-weight: 400;
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+    text-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
 }
 
 .nav-links {
@@ -69,15 +96,18 @@ body {
 }
 
 .nav-links a {
+    font-family: 'Bebas Neue', sans-serif;
     color: var(--text-secondary);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 400;
+    font-size: 1.3rem;
+    letter-spacing: 1.5px;
     transition: var(--transition);
     position: relative;
 }
 
 .nav-links a:hover {
-    color: var(--text-primary);
+    color: var(--accent-cyan);
 }
 
 .nav-links a::after {
@@ -121,8 +151,53 @@ body {
     display: flex;
     align-items: center;
     padding-top: 70px;
-    background: radial-gradient(ellipse at center, rgba(229, 9, 20, 0.1) 0%, transparent 70%);
+    position: relative;
+    overflow: hidden;
 }
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.movie-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://assets.nflxext.com/ffe/siteui/vlv3/9ba9f0e2-b246-47f4-bd1f-3e84c23a5db8/web/ID-id-20251020-TRIFECTA-perspective_2df8f46f-a774-41be-b103-f03e78d53a64_large.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* opacity: 0.9; */
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.9) 0%,
+        rgba(0, 0, 0, 0.7) 50%,
+        rgba(0, 0, 0, 0.9) 100%
+    ),
+    linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.2) 0%,
+        rgba(0, 0, 0, 0.5) 100%
+    );
+    z-index: 1;
+}
+
+/* Background animations removed - using static Netflix image */
 
 .hero-container {
     max-width: 1200px;
@@ -132,23 +207,29 @@ body {
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: center;
+    position: relative;
+    z-index: 2;
 }
 
 .hero-title {
-    font-size: 3.5rem;
-    font-weight: 700;
-    line-height: 1.2;
+    font-size: 4rem;
+    font-weight: 400;
+    line-height: 1.1;
     margin-bottom: 1.5rem;
+    letter-spacing: 2px;
 }
 
 .gradient-text {
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-family: 'Bebas Neue', sans-serif !important;
+    color: #00e5ff !important;
+    text-shadow: 0 0 30px rgba(0, 229, 255, 0.6) !important;
+    letter-spacing: 4px !important;
+    font-size: 4.5rem !important;
+    display: inline-block;
 }
 
 .hero-description {
+    /* font-family: 'Bebas Neue', sans-serif !important; */
     font-size: 1.2rem;
     color: var(--text-secondary);
     margin-bottom: 2.5rem;
@@ -163,13 +244,16 @@ body {
 
 .btn-primary,
 .btn-secondary {
+    font-family: 'Bebas Neue', sans-serif;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 12px 24px;
+    padding: 14px 28px;
     border-radius: 30px;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 400;
+    font-size: 1.3rem;
+    letter-spacing: 1.5px;
     transition: var(--transition);
     border: 2px solid transparent;
 }
@@ -182,7 +266,7 @@ body {
 
 .btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 15px 40px rgba(229, 9, 20, 0.4);
+    box-shadow: 0 15px 40px rgba(139, 0, 0, 0.4);
 }
 
 .btn-secondary {
@@ -274,15 +358,34 @@ body {
 .section-header {
     text-align: center;
     margin-bottom: 4rem;
+    position: relative;
+}
+
+.section-header .section-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 18px;
+    margin: 0 auto 2rem;
+    display: block;
+    box-shadow: 0 10px 30px rgba(139, 0, 0, 0.3);
+    transition: var(--transition);
+}
+
+.section-header .section-logo:hover {
+    transform: scale(1.05) rotate(5deg);
+    box-shadow: 0 15px 40px rgba(139, 0, 0, 0.5);
 }
 
 .section-header h2 {
-    font-size: 2.5rem;
-    font-weight: 700;
+    font-family: 'Bebas Neue', sans-serif !important;
+    font-size: 3rem;
+    font-weight: 400;
     margin-bottom: 1rem;
+    letter-spacing: 3px;
 }
 
 .section-header p {
+    font-family: 'Bebas Neue', sans-serif !important;
     color: var(--text-secondary);
     font-size: 1.1rem;
     max-width: 600px;
@@ -312,8 +415,8 @@ body {
 
 .feature-card:hover {
     transform: translateY(-5px);
-    background: rgba(229, 9, 20, 0.05);
-    border-color: rgba(229, 9, 20, 0.3);
+    background: rgba(139, 0, 0, 0.05);
+    border-color: rgba(139, 0, 0, 0.3);
 }
 
 .feature-icon {
@@ -330,9 +433,10 @@ body {
 }
 
 .feature-card h3 {
-    font-size: 1.4rem;
-    font-weight: 600;
+    font-size: 1.8rem;
+    font-weight: 400;
     margin-bottom: 1rem;
+    letter-spacing: 2px;
 }
 
 .feature-card p {
@@ -353,7 +457,7 @@ body {
 }
 
 .screenshot-item {
-    aspect-ratio: 9/16;
+    aspect-ratio: 9/20;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: var(--shadow);
@@ -386,6 +490,17 @@ body {
     font-weight: 500;
 }
 
+.screenshot-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.screenshot-item:hover .screenshot-image {
+    transform: scale(1.05);
+}
+
 /* Download Section */
 .download {
     padding: 6rem 0;
@@ -397,9 +512,10 @@ body {
 }
 
 .download-content h2 {
-    font-size: 2.5rem;
-    font-weight: 700;
+    font-size: 3rem;
+    font-weight: 400;
     margin-bottom: 1rem;
+    letter-spacing: 3px;
 }
 
 .download-content p {
@@ -423,10 +539,11 @@ body {
 }
 
 .stat h3 {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--primary-color);
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: var(--accent-cyan);
     margin-bottom: 0.5rem;
+    letter-spacing: 2px;
 }
 
 .stat p {
@@ -468,12 +585,17 @@ body {
     color: var(--text-primary);
 }
 
+.footer-section h4 {
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+}
+
 .footer-section h3 {
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-weight: 700;
+    font-family: 'Bebas Neue', sans-serif;
+    color: #00e5ff;
+    text-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
+    font-weight: 400;
+    letter-spacing: 2px;
 }
 
 .footer-section p {
@@ -490,13 +612,16 @@ body {
 }
 
 .footer-section ul li a {
+    font-family: 'Bebas Neue', sans-serif;
     color: var(--text-secondary);
     text-decoration: none;
     transition: var(--transition);
+    font-size: 1.2rem;
+    letter-spacing: 1.5px;
 }
 
 .footer-section ul li a:hover {
-    color: var(--primary-color);
+    color: var(--accent-cyan);
 }
 
 .social-links {
